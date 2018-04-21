@@ -15,7 +15,7 @@ node {
             sh 'python OnTheCloud/manage.py migrate'
             sh 'python OnTheCloud/manage.py createsuperuser'
             sh 'python OnTheCloud/manage.py collectstatic --noinput'
-            sh 'BUILD_ID=dontKillMe nohup python OnTheCloud/manage.py runserver 18.188.47.134:9595'
+            sh 'BUILD_ID=dontKillMe nohup python OnTheCloud/manage.py runserver 0:8081'
 
 
         stage 'Deploy'
