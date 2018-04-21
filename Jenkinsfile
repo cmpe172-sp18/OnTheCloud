@@ -9,7 +9,7 @@ node {
             sh 'git log HEAD^..HEAD --pretty="%h %an - %s" > GIT_CHANGES'
             def lastChanges = readFile('GIT_CHANGES')
         stage 'Test'
-            sh 'virtualenv env -p python3.5'
+            sh 'virtualenv env -p python2.7'
             sh '. env/bin/activate'
             sh 'env/bin/pip install -r requirements.txt'
             sh 'env/bin/python2.7 manage.py test --testrunner=djtrump.tests.test_runners.NoDbTestRunner'
