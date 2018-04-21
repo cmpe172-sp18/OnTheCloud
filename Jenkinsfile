@@ -15,7 +15,10 @@ node {
             
 
         stage 'Deploy'
-            sh './deployment/deploy_prod.sh'
+            python OnTheCloud/manage.py migrate
+            python OnTheCloud/manage.py createsuperuser
+            python OnTheCloud/manage.py collectstatic
+            python OnTheCloud/manage.py runserver
 
     }
 
