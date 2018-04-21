@@ -1,23 +1,27 @@
-pipeline {
-  agent {
-    node {
-      label 'Start'
+#!groovy
+
+node {
+
+    try {
+        stage 'Checkout'
+            checkout scm
+
+            sh 'git log HEAD^..HEAD --pretty="%h %an - %s" > GIT_CHANGES'
+            def lastChanges = readFile('GIT_CHANGES')
+        stage 'Test'
+            sh 'virtualenv env -p python3.5'
+            sh '. env/bin/activate'
+            sh 'env/bin/pip install -r requirements.txt'
+            sh 'env/bin/python2.7 manage.py test --testrunner=djtrump.tests.test_runners.NoDbTestRunner'
+
+        stage 'Deploy'
+            sh './deployment/deploy_prod.sh'
+
     }
 
-  }
-  stages {
-    stage('error') {
-      steps {
-        sh '''#!/bin/bash
-export WORKSPACE=`pwd`
-# Create/Activate virtualenv
-virtualenv venv
-source venv/bin/activate
-# Install Requirements
-pip install -r requirements.txt
-# Run tests
-python manage.py test'''
-      }
+    catch (err) {
+        
+        throw err
     }
-  }
+
 }
