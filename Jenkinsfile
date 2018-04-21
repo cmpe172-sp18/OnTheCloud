@@ -15,10 +15,10 @@ node {
             
 
         stage 'Deploy'
-            python OnTheCloud/manage.py migrate
-            python OnTheCloud/manage.py createsuperuser
-            python OnTheCloud/manage.py collectstatic
-            python OnTheCloud/manage.py runserver
+            sh 'env/bin/python OnTheCloud/manage.py migrate
+            sh 'env/bin/python OnTheCloud/manage.py createsuperuser
+            sh 'env/bin/python OnTheCloud/manage.py collectstatic
+            sh 'env/bin/python OnTheCloud/manage.py runserver
 
     }
 
