@@ -12,14 +12,14 @@ node {
             sh 'virtualenv env -p python2.7'
             sh '. env/bin/activate'
             sh 'env/bin/pip install -r OnTheCloud/requirements.txt'
-            
-
-        stage 'Deploy'
             sh 'env/bin/python OnTheCloud/manage.py migrate
             sh 'env/bin/python OnTheCloud/manage.py createsuperuser
             sh 'env/bin/python OnTheCloud/manage.py collectstatic
             sh 'env/bin/python OnTheCloud/manage.py runserver
 
+
+        stage 'Deploy'
+            
     }
 
     catch (err) {
