@@ -6,11 +6,17 @@ pipeline {
 
   }
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        sh '''sh \'virtualenv env -p python3.5\'
-sh \'. env/bin/activate\'
-sh \'env/bin/pip install -r requirements.txt\''''
+        sh '''#!/bin/bash
+export WORKSPACE=`pwd`
+# Create/Activate virtualenv
+virtualenv venv
+source venv/bin/activate
+# Install Requirements
+pip install -r requirements.txt
+# Run tests
+python manage.py test'''
       }
     }
   }
