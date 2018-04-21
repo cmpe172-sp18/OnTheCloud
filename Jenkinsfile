@@ -12,10 +12,10 @@ node {
             sh 'virtualenv env -p python2.7'
             sh '. env/bin/activate'
             sh 'env/bin/pip install -r OnTheCloud/requirements.txt'
-            sh 'python manage.py migrate'
-            sh 'python manage.py createsuperuser'
-            sh 'python manage.py collectstatic'
-            sh 'python manage.py runserver'
+            sh 'python OnTheCloud/manage.py migrate'
+            sh 'python OnTheCloud/manage.py createsuperuser'
+            sh 'python OnTheCloud/manage.py collectstatic'
+            sh 'python OnTheCloud/manage.py runserver'
 
 
         stage 'Deploy'
