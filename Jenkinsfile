@@ -14,8 +14,7 @@ node {
             sh 'env/bin/pip install -r OnTheCloud/requirements.txt'
             sh 'python OnTheCloud/manage.py migrate'
             sh 'python OnTheCloud/manage.py createsuperuser'
-            sh 'python OnTheCloud/manage.py collectstatic'
-            sh 'yes'
+            sh 'python OnTheCloud/manage.py collectstatic --noinput'
             sh 'python OnTheCloud/manage.py runserver'
 
 
