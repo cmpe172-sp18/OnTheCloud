@@ -11,8 +11,8 @@ node {
         stage 'Test'
             sh 'virtualenv env -p python2.7'
             sh '. env/bin/activate'
-            sh 'env/bin/pip install -r requirements.txt'
-            sh 'env/bin/python2.7 manage.py test --testrunner=djtrump.tests.test_runners.NoDbTestRunner'
+            sh 'env/bin/pip install -r OnTheCloud/requirements.txt'
+            
 
         stage 'Deploy'
             sh './deployment/deploy_prod.sh'
