@@ -8,7 +8,7 @@ node {
 
             sh 'git log HEAD^..HEAD --pretty="%h %an - %s" > GIT_CHANGES'
             def lastChanges = readFile('GIT_CHANGES')
-        stage 'Test'
+        stage 'Deploy'
             sh 'virtualenv env -p python2.7'
             sh '. env/bin/activate'
             sh 'env/bin/pip install -r OnTheCloud/requirements.txt'
@@ -16,11 +16,6 @@ node {
             sh 'python OnTheCloud/manage.py createsuperuser'
             sh 'python OnTheCloud/manage.py collectstatic --noinput'
             sh 'BUILD_ID=dontKillMe nohup python OnTheCloud/manage.py runserver'
-
-
-        stage 'Deploy'
-            
-    }
 
     catch (err) {
         
