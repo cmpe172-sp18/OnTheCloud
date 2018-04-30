@@ -16,7 +16,7 @@ node {
             sh 'python OnTheCloud/manage.py createsuperuser'
             sh 'python OnTheCloud/manage.py collectstatic --noinput'
             sh 'BUILD_ID=dontKillMe nohup python OnTheCloud/manage.py runserver'
-
+    }
     catch (err) {
         
         throw err
