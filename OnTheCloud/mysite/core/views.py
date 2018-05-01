@@ -12,7 +12,7 @@ class DocumentCreateView(CreateView):
     success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
-        context = super(CreateView,self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         documents = Document.objects.all()
         context['documents'] = documents
         return context
@@ -28,4 +28,4 @@ class PrivateDocumentCreateView(CreateView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        return super(CreateView,self).form_valid(form)
+        return super().form_valid(form)
