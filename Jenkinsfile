@@ -43,7 +43,7 @@ node {
         
         stage 'Deploying'
             abortPreviousRunningBuilds()
-            sh 'BUILD_ID=dontKillMe nohup python OnTheCloud/manage.py runserver 0.0.0.0:8001'
+            sh 'BUILD_ID=dontKillMe nohup python OnTheCloud/manage.py runserver'
             
     }
     catch (err) {
