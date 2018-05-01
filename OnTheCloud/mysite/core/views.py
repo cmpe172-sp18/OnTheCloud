@@ -28,4 +28,4 @@ class PrivateDocumentCreateView(CreateView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        return super().form_valid(form)
+        return super(CreateView,self).form_valid(form)
