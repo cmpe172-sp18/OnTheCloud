@@ -1,4 +1,10 @@
 #!groovy
+
+import hudson.model.*
+import hudson.AbortException
+import hudson.console.HyperlinkNote
+import java.util.concurrent.CancellationException
+
 def abortPreviousRunningBuilds() {
             def hi = Hudson.instance
             def pname = env.JOB_NAME.split('/')[0]
