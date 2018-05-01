@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Public Uploads</h2>
-  <h3>Upload to Amazon S3</h3>
+  <h2>Private Uploads</h2>
+  <h3>{{ user.username }}'s Profile - Upload to Amazon S3</h3>
 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
   </form>
+
+  <p>The files listed below are private.</p>
 
   <table>
     <thead>
@@ -19,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for document in documents %}
+      {% for document in user.documents.all %}
         <tr>
           <td><a href="{{ document.upload.url }}" target="_blank">{{ document.upload.name }}</a></td>
           <td>{{ document.uploaded_at }}</td>
