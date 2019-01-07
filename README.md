@@ -1,6 +1,8 @@
 # OnTheCloud
 Cloud Storage web app
 
+Original project was built on AWS server running Amazon Linux Kernal
+
 To run locally, do the following:
 
 1. Clone this 'https://github.com/cmpe172-sp18/OnTheCloud'
@@ -20,3 +22,4 @@ To run using Jenkins:
 4.Go to a web browser and navigate to 'localhost:8000'
 
 You should now have a working jenkins build server that automatically builds upon commit and stops any previous build in the process. This allows for automated continuos deployment of you web app with out the need to manual rebooting.
+
